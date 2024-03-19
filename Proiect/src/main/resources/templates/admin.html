@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <script defer src="/js/admin.js"></script>
+    <script defer src="/js/timer.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dormitory</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-wrapper">
+                <a href="/">Student Accommodation</a>
+            </div>
+            <div class="actions-wrapper">
+                <a href="admin" th:if="${admin == 1}">Admin</a>
+                <a href="students">Student</a>
+                <a href="logout">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class = "student-info">
+            <p>Name: <span th:text = "${name}"></span></p>
+            <p>Phase: <span th:text = "${phase}"></span></p>
+        </section>
+        <section class = "dormitory-area">
+            <h2> DORMITORIES</h2>
+            <div class = "dormitory-list">
+                <ul class = "scrollable-area">
+                    <div class = "dormitory-line-group" th:each="dormitory : ${dormitoryList}">
+                        <li th:text = "${dormitory.getName()}"></li>
+                        <button class="x-button" onclick="deleteDormitory(event)">X</button>
+                    </div>
+                </ul>
+                <div id = "dormitoryForm">
+                    <input type="text" id="dormitory-input-name" placeholder = "Dormitory name">
+                    <button id = "addRoomButton" onclick="addRoom()">Add room</button>
+                    <div class="room-list-container">
+                        <div class="group-room">
+                            <input type="number" class="room-input-capacity" placeholder="Capacity">
+                            <button class="x-button" onclick="deleteRoom(event)">X</button>
+                        </div>
+                    </div>
+                    <button onclick="addDormitory()">Add</button>
+                </div>
+            </div>
+            <div id = "options">
+                <div th:if="${phase.equals('none')}" class = "submit-info">
+                    <label>No Phase</label>
+                    <input type="datetime-local" class="datetime" name="datetime">
+                    <button value = "Submit" class = "submitButton" onclick="startDormitoryPhase()">Start Dormitory Phase</button>
+                </div>
+                <div th:if="${phase.equals('dormitory')}" class = "submit-info">
+                    <label>Student Phase</label>
+                    <input type="datetime-local" class="datetime" name="datetime">
+                    <div class = "timer">
+                        <p >Timer :  <span th:text="${timer}" id = "timeLeft"></span></p>
+                    </div>
+                    <button value = "Submit" class = "submitButton" onclick="endDormitoryPhase()">End Dormitory</button>
+                </div>
+                <div th:if="${phase.equals('student')}" class = "submit-info">
+                    <label>Finish student phase</label>
+                    <div class = "timer">
+                        <p >Timer :  <span th:text="${timer}" id = "timeLeft"></span></p>
+                    </div>
+                    <button value = "Submit" class = "submitButton" onclick="endStudentPhase()">End Student</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

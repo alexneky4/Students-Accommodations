@@ -1,0 +1,67 @@
+header {
+    height: 6.4rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5rem;
+    background-color: #292929;
+    color: #fff;
+    height: 100%;
+}
+
+nav .logo-wrapper a {
+    font-size: 3rem;
+    background-image: linear-gradient(90deg, rgb(141,178,229) 0%, rgba(137, 115, 179, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+nav .actions-wrapper {
+    display: flex;
+    gap: 3rem;
+}
+
+nav a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 600px)
+{
+    nav{
+        padding: 0 1rem;
+    }
+
+    nav .logo-wrapper a {
+        font-size: 3rem;
+    }
+
+    nav a{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 380px)
+{
+    nav{
+        padding: 0 0.5rem;
+    }
+
+    nav .logo-wrapper a {
+        font-size: 2rem;
+    }
+
+    nav a{
+        font-size: 1.4rem;
+    }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/no-phase.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dormitory</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-wrapper">
+                <a href="/">Student Accommodation</a>
+            </div>
+            <div class="actions-wrapper">
+                <a href="admin" th:if="${admin == 1}">Admin</a>
+                <a href="logout">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class = "student-info">
+            <p>Name: <span th:text = "${name}"></span></p>
+            <p>Grade: <span th:text = "${grade}"></span></p>
+            <p>Dormitory: <span th:text = "${dormitory}"></span></p>
+            <p>Room: <span th:text = "${room}"></span></p>
+        </section>
+        <section class = "dormitory-area" id = "dormitoryArea">
+            <h2>Currently the Student Accommodation hasn't started yet! Please check again later!</h2>
+        </section>
+    </main>
+</body>
+</html>

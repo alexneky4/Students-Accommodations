@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/register.css">
+    <!-- <script defer src="public/resources/js/register.js"></script> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <!-- <script defer src="../header/header.js"></script> --> 
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-wrapper">
+                <a href="/">Student Accommodation</a>
+            </div>
+            <div class="actions-wrapper">
+                <a href="register">Register</a>
+                <a href="login">Login</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>Create an account</h1>
+
+            <form action="/register" method="POST" th:object="${student}">
+                <div class="name-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" th:field="*{name}" placeholder="Full Name">
+                    <p th:errors="*{name}" class="error-color"
+                       th:if="${#fields.hasErrors('name')}">
+                    </p>
+                </div>
+
+                <div class="registration-number-group">
+                    <label for="registrationNumber">Registration Number</label>
+                    <input type="text" id="registrationNumber" name="registrationNumber" th:field="*{registrationNumber}" placeholder="Registration Number">
+                    <p th:errors="*{registrationNumber}" class="error-color"
+                       th:if="${#fields.hasErrors('registrationNumber')}">
+                    </p>
+                </div>
+                
+                <div class="password-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" th:field="*{password}" placeholder="Password">
+                    <p th:errors="*{password}" class="error-color"
+                       th:if="${#fields.hasErrors('password')}">
+                    </p>
+                </div>
+
+                <div class="average-grade-group">
+                    <label for="averageGrade">Average Grade</label>
+                    <input type="number" id="averageGrade" name="averageGrade" th:field="*{averageGrade}" placeholder="Average Grade">
+                    <p th:errors="*{averageGrade}" class="error-color"
+                       th:if="${#fields.hasErrors('averageGrade')}">
+                    </p>
+                </div>
+                <button type="submit">Register</button>
+                <a href="login">Already have an account?</a>
+            </form>
+        </section>
+    </main>
+</body>
